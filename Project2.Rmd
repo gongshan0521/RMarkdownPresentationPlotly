@@ -1,0 +1,33 @@
+---
+title: "R Markdown Presentation & Plotly"
+author: "Shan Gong"
+date: "4/23/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(plotly)
+```
+
+## Introduction
+
+**Project requirement**:
+
+1. Create a web page presentation using R Markdown that features a plot created with Plotly.
+2. Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+
+**Data**:
+
+Top 5 E-sposrts players and prizes of the year from 2011 to 2018. 
+
+## Data
+
+```{r message=FALSE}
+#load data
+fileName <- "Data.csv"
+data <- read.csv(fileName, header = TRUE)
+p <- plot_ly(data = data, x = ~Year, y = ~Total,
+             text = ~paste("PlayerID: ", PlayerID, "Game: ", Game))
+p
+```
